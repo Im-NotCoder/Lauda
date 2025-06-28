@@ -6,7 +6,7 @@ from pyrogram.types import Message
 import asyncio
 
 @app.on_raw_update()
-async def video_chat_join_raw_handler(client: Client, update):
+async def video_chat_join_raw_handler(client: Client, update, users, chats):
     if isinstance(update, UpdateGroupCallParticipants):
         chat_id = update.chat_id
 
@@ -26,11 +26,9 @@ async def video_chat_join_raw_handler(client: Client, update):
 🔗 Username : {username}
 🆔 ID : {user_id}"""
 
-                # send message in group where VC is happening
                 sent: Message = await client.send_message(chat_id, text)
                 await asyncio.sleep(6)
                 await sent.delete()
 
             except Exception as e:
                 print(f"[VideoChat RAW Handler Error] {e}")
-
