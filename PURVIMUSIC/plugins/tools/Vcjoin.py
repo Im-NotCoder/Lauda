@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import ChatMemberUpdated
 import asyncio
-from SONALI import app
+from PURVIMUSIC import app
 
 @app.on_chat_member_updated()
 async def handle_video_chat_join(client: Client, update: ChatMemberUpdated):
